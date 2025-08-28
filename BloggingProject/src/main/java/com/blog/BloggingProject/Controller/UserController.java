@@ -36,15 +36,12 @@ public class UserController {
     }
 
     @PutMapping("/update/{id}")
-    public Result update(@PathVariable int id,
-                         @Valid @RequestBody UserUpdateRequest request)
-            throws UserNotFoundException, EmailAlreadyExistException {
+    public Result update(@PathVariable int id,  @Valid @RequestBody UserUpdateRequest request) throws UserNotFoundException, EmailAlreadyExistException {
         return userService.updateUser(id, request);
     }
 
     @DeleteMapping("/delete/{id}")
-    public Result delete(@PathVariable int id)
-            throws UserNotFoundException {
+    public Result delete(@PathVariable int id) throws UserNotFoundException {
         return userService.deleteUser(id);
     }
 }
