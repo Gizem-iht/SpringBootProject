@@ -66,8 +66,7 @@ public class PostManager implements PostService {
     }
 
     @Override
-    public Result updatePost(int id, PostUpdateRequest postRequest)
-            throws PostNotFoundException, CategoryNotFoundException {
+    public Result updatePost(int id, PostUpdateRequest postRequest)  throws PostNotFoundException, CategoryNotFoundException {
 
         checkIsExistsByPostId(id);
         checkIsExistsByCategoryId(postRequest.getCategoryId());
