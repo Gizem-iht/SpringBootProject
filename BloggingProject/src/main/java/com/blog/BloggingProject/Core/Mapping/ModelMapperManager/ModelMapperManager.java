@@ -4,7 +4,8 @@ import com.blog.BloggingProject.Core.Mapping.ModelMapperService.ModelMapperServi
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Service;
-/*ModelMapper, Java’da nesneler arasında otomatik veri aktarımı sağlayan bir kütüphanedir.
+/*
+ModelMapper, Java’da nesneler arasında otomatik veri aktarımı sağlayan bir kütüphanedir.
 Bu kütüphane, nesnelerin özelliklerini otomatik olarak eşleştirir ve bu sayede veri aktarımını kolaylaştırır.
 Kullanıcı verilerini bir User nesnesinden UserDTO nesnesine taşımak için ideal bir çözümdür.
 */
