@@ -37,9 +37,7 @@ public class CommentController {
     }
 
     @PutMapping("/update/{id}")
-    public Result update(@PathVariable int id,
-                         @Valid @RequestBody CommentUpdateRequest request)
-            throws CommentNotFoundException, PostNotFoundException {
+    public Result update(@PathVariable int id, @Valid @RequestBody CommentUpdateRequest request) throws CommentNotFoundException, PostNotFoundException {
         return commentService.updateComment(id, request);
     }
 
