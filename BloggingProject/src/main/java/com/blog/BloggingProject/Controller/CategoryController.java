@@ -38,8 +38,7 @@ public class CategoryController {
     }
 
     @PutMapping("/update/{id}")
-    public Result update(@PathVariable int id, @Valid @RequestBody CategoryUpdateRequest request)
-            throws CategoryNotFoundException, CategoryAlreadyExistException {
+    public Result update(@PathVariable int id, @Valid @RequestBody CategoryUpdateRequest request) throws CategoryNotFoundException, CategoryAlreadyExistException {
         request.setCategoryId(id);
         return categoryService.updateCategory(request);
     }
