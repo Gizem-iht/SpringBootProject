@@ -65,8 +65,7 @@ public class CommentManager implements CommentService {
     }
 
     @Override
-    public Result updateComment(int id, CommentUpdateRequest request)
-            throws CommentNotFoundException {
+    public Result updateComment(int id, CommentUpdateRequest request) throws CommentNotFoundException {
         checkIsExistsByCommentId(id);
 
         Comment existingcomment = commentRepository.findById(id).get();
