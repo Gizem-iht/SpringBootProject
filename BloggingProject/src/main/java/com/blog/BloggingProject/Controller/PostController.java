@@ -32,21 +32,17 @@ public class PostController {
     }
 
     @PostMapping("/add")
-    public Result create(@Valid @RequestBody PostCreateRequest request)
-            throws CategoryNotFoundException {
+    public Result create(@Valid @RequestBody PostCreateRequest request) throws CategoryNotFoundException {
         return postService.createPost(request);
     }
 
     @PutMapping("/update/{id}")
-    public Result update(@PathVariable int id,
-                         @Valid @RequestBody PostUpdateRequest request)
-            throws PostNotFoundException, CategoryNotFoundException {
+    public Result update(@PathVariable int id,  @Valid @RequestBody PostUpdateRequest request) throws PostNotFoundException, CategoryNotFoundException {
         return postService.updatePost(id, request);
     }
 
     @DeleteMapping("/delete/{id}")
-    public Result delete(@PathVariable int id)
-            throws PostNotFoundException {
+    public Result delete(@PathVariable int id) throws PostNotFoundException {
         return postService.deletePost(id);
     }
 }
