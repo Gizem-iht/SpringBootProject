@@ -3,12 +3,12 @@ package com.blog.BloggingProject.Controller;
 import com.blog.BloggingProject.Business.Abstract.PostService;
 import com.blog.BloggingProject.Core.Utilities.DataResult;
 import com.blog.BloggingProject.Core.Utilities.Result;
-import com.blog.BloggingProject.Dto.PostDto.PostCreateRequest;
-import com.blog.BloggingProject.Dto.PostDto.PostListRequest;
-import com.blog.BloggingProject.Dto.PostDto.PostUpdateRequest;
-import com.blog.BloggingProject.Exception.CategoryException.CategoryNotFoundException;
-import com.blog.BloggingProject.Exception.NoDataFoundException;
-import com.blog.BloggingProject.Exception.PostException.PostNotFoundException;
+import com.blog.BloggingProject.Dtos.PostDto.PostListDto;
+import com.blog.BloggingProject.Request.PostRequest.PostCreateRequest;
+import com.blog.BloggingProject.Request.PostRequest.PostUpdateRequest;
+import com.blog.BloggingProject.Exceptions.BusinessException.CategoryExceptions.CategoryNotFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.NoDataFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.PostExceptions.PostNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +27,7 @@ public class PostController {
     }
 
     @GetMapping("/getall")
-    public DataResult<List<PostListRequest>> getAll() throws NoDataFoundException {
+    public DataResult<List<PostListDto>> getAll() throws NoDataFoundException {
         return postService.getAll();
     }
 

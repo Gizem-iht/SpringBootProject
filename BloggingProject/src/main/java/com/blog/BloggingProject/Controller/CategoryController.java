@@ -3,11 +3,12 @@ package com.blog.BloggingProject.Controller;
 import com.blog.BloggingProject.Business.Abstract.CategoryService;
 import com.blog.BloggingProject.Core.Utilities.DataResult;
 import com.blog.BloggingProject.Core.Utilities.Result;
-import com.blog.BloggingProject.Dto.CategoryDto.CategoryCreateRequest;
-import com.blog.BloggingProject.Dto.CategoryDto.CategoryListRequest;
-import com.blog.BloggingProject.Dto.CategoryDto.CategoryUpdateRequest;
-import com.blog.BloggingProject.Exception.CategoryException.CategoryNotFoundException;
-import com.blog.BloggingProject.Exception.NoDataFoundException;
+import com.blog.BloggingProject.Dtos.CategoryDto.CategoryListDto;
+import com.blog.BloggingProject.Exceptions.BusinessException.CategoryExceptions.CategoryAlreadyExistException;
+import com.blog.BloggingProject.Request.CategoryRequest.CategoryCreateRequest;
+import com.blog.BloggingProject.Request.CategoryRequest.CategoryUpdateRequest;
+import com.blog.BloggingProject.Exceptions.BusinessException.CategoryExceptions.CategoryNotFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.NoDataFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,19 +27,19 @@ public class CategoryController {
     }
 
     @GetMapping("/getall")
-    public DataResult<List<CategoryListRequest>> getAll() throws NoDataFoundException {
+    public DataResult<List<CategoryListDto>> getAll() throws NoDataFoundException {
         return categoryService.getAll();
     }
 
 
     @PostMapping("/add")
-    public Result create(@Valid @RequestBody CategoryCreateRequest request) {
+    public Result create(@Valid @RequestBody CategoryCreateRequest request) throws CategoryAlreadyExistException {
         return categoryService.createCategory(request);
     }
 
     @PutMapping("/update/{id}")
     public Result update(@PathVariable int id, @Valid @RequestBody CategoryUpdateRequest request)
-            throws CategoryNotFoundException {
+            throws CategoryNotFoundException, CategoryAlreadyExistException {
         request.setCategoryId(id);
         return categoryService.updateCategory(request);
     }

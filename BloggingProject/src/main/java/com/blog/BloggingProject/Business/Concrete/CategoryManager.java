@@ -1,39 +1,44 @@
 package com.blog.BloggingProject.Business.Concrete;
 
 import com.blog.BloggingProject.Business.Abstract.CategoryService;
+import com.blog.BloggingProject.Core.Mapping.ModelMapperService.ModelMapperService;
 import com.blog.BloggingProject.Core.Utilities.DataResult;
 import com.blog.BloggingProject.Core.Utilities.Result;
 import com.blog.BloggingProject.Core.Utilities.SuccessDataResult;
 import com.blog.BloggingProject.Core.Utilities.SuccessResult;
-import com.blog.BloggingProject.Dto.CategoryDto.CategoryCreateRequest;
-import com.blog.BloggingProject.Dto.CategoryDto.CategoryListRequest;
-import com.blog.BloggingProject.Dto.CategoryDto.CategoryUpdateRequest;
+import com.blog.BloggingProject.Dtos.CategoryDto.CategoryListDto;
 import com.blog.BloggingProject.Entities.Concretes.Category;
-import com.blog.BloggingProject.Exception.CategoryException.CategoryAlreadyExistException;
-import com.blog.BloggingProject.Exception.CategoryException.CategoryNotFoundException;
-import com.blog.BloggingProject.Exception.NoDataFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.CategoryExceptions.CategoryAlreadyExistException;
+import com.blog.BloggingProject.Exceptions.BusinessException.CategoryExceptions.CategoryNotFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.NoDataFoundException;
 import com.blog.BloggingProject.Repositories.CategoryRepository;
+import com.blog.BloggingProject.Request.CategoryRequest.CategoryCreateRequest;
+import com.blog.BloggingProject.Request.CategoryRequest.CategoryUpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryManager implements CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final ModelMapperService modelMapperService;
 
     @Autowired
-    public CategoryManager(CategoryRepository categoryRepository) {
+    public CategoryManager(CategoryRepository categoryRepository, ModelMapperService modelMapperService) {
         this.categoryRepository = categoryRepository;
+        this.modelMapperService = modelMapperService;
     }
 
     @Override
-    public DataResult<List<CategoryListRequest>> getAll() throws NoDataFoundException {
-        List<CategoryListRequest> dtoList = categoryRepository.findAll()
+    public DataResult<List<CategoryListDto>> getAll() throws NoDataFoundException {
+        List<CategoryListDto> dtoList = categoryRepository.findAll()
                 .stream()
-                .map(c -> new CategoryListRequest(c.getId(), c.getName()))
-                .collect(java.util.stream.Collectors.toList());
+                .map(category -> this.modelMapperService.forDto().map(category, CategoryListDto.class))
+                //modelmapper sayesinde c.getId(), c.getName() şeklinde yazmadık(Gizem)
+                .collect(Collectors.toList());
 
         checkIfListEmpty(dtoList);
 
@@ -41,25 +46,29 @@ public class CategoryManager implements CategoryService {
     }
 
     @Override
-    public Result createCategory(CategoryCreateRequest createRequest) throws CategoryAlreadyExistException{
+    public Result createCategory(CategoryCreateRequest createRequest) throws CategoryAlreadyExistException {
 
         checkIsNotExistByCategoryName(createRequest.getName());
 
-        Category category = new Category();
-        category.setName(createRequest.getName());
+        Category category = this.modelMapperService.forRequest().map(createRequest, Category.class);
+        //createRequesti içindeki alanları aldık ve category nesnesine çevirdik.(Gizem)
         categoryRepository.save(category);
 
         return new SuccessResult("Category created successfully.");
+
     }
 
     @Override
-    public Result updateCategory(CategoryUpdateRequest updateCategoryRequest) throws CategoryNotFoundException,CategoryAlreadyExistException {
-        checkIsExistsByCategoryId(updateCategoryRequest.getCategoryId());
+    public Result updateCategory(CategoryUpdateRequest updateCategoryRequest)
+            throws CategoryNotFoundException, CategoryAlreadyExistException {
 
+        checkIsExistsByCategoryId(updateCategoryRequest.getCategoryId());
         checkIsNotExistByCategoryName(updateCategoryRequest.getName());
 
         Category existingCategory = categoryRepository.findById(updateCategoryRequest.getCategoryId()).get();
-        existingCategory.setName(updateCategoryRequest.getName());
+
+        this.modelMapperService.forRequest().map(updateCategoryRequest, existingCategory);
+
         categoryRepository.save(existingCategory);
 
         return new SuccessResult("Category updated successfully. ID: " + updateCategoryRequest.getCategoryId());
@@ -68,7 +77,6 @@ public class CategoryManager implements CategoryService {
     @Override
     public Result deleteCategory(int id) throws CategoryNotFoundException {
         checkIsExistsByCategoryId(id);
-
         categoryRepository.deleteById(id);
         return new SuccessResult("Category deleted successfully. ID: " + id);
     }
@@ -86,6 +94,7 @@ public class CategoryManager implements CategoryService {
             throw new NoDataFoundException("No data found in the system.");
         }
     }
+
     @Override
     public void checkIsNotExistByCategoryName(String name) throws CategoryAlreadyExistException {
         if (categoryRepository.existsByName(name)) {
@@ -93,4 +102,3 @@ public class CategoryManager implements CategoryService {
         }
     }
 }
-

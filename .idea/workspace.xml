@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b0ef5771-0cc5-4fc9-9089-0ed65a6bf337" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Core/Mapping/ModelMapperManager/ModelMapperManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Core/Mapping/ModelMapperService/ModelMapperService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dtos/CategoryDto/CategoryListDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dtos/CommentDto/CommentListDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dtos/PostDto/PostListDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dtos/UserDto/UserListDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exceptions/BusinessException/NoDataFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/en sonnn.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/BloggingProjectApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/BloggingProjectApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Abstract/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Abstract/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Abstract/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Abstract/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Abstract/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Abstract/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Abstract/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Abstract/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Concrete/CategoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Concrete/CategoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Concrete/CommentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Concrete/CommentManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Concrete/PostManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Concrete/PostManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Concrete/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Business/Concrete/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/CategoryDto/CategoryCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/CategoryRequest/CategoryCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/CategoryDto/CategoryDeleteRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/CategoryRequest/CategoryDeleteRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/CategoryDto/CategoryListRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/CategoryDto/CategoryUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/CategoryRequest/CategoryUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/CommentDto/CommentCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/CommentRequest/CommentCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/CommentDto/CommentDeleteRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/CommentRequest/CommentDeleteRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/CommentDto/CommentListRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/CommentDto/CommentUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/CommentRequest/CommentUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/PostDto/PostCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/PostRequest/PostCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/PostDto/PostDeleteRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/PostRequest/PostDeleteRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/PostDto/PostListRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/PostDto/PostUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/PostRequest/PostUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/UserDto/UserCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/UserRequest/UserCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/UserDto/UserDeleteRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/UserRequest/UserDeleteRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/UserDto/UserListRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Dto/UserDto/UserUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Request/UserRequest/UserUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exception/CategoryException/CategoryAlreadyExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exceptions/BusinessException/CategoryExceptions/CategoryAlreadyExistException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exception/CategoryException/CategoryNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exceptions/BusinessException/CategoryExceptions/CategoryNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exception/CommentException/CommentNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exceptions/BusinessException/CommentExceptions/CommentNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exception/NoDataFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exception/PostException/PostNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exceptions/BusinessException/PostExceptions/PostNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exception/UserException/EmailAlreadyExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exceptions/BusinessException/UserExceptions/EmailAlreadyExistException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exception/UserException/UserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BloggingProject/src/main/java/com/blog/BloggingProject/Exceptions/BusinessException/UserExceptions/UserNotFoundException.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Exception" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="31spJlfJ0HoQyh5zoFVWNAXa9cg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.BloggingProjectApplication.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/gizem/Desktop/proje"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b0ef5771-0cc5-4fc9-9089-0ed65a6bf337" name="Changes" comment="" />
+      <created>1756322564614</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756322564614</updated>
+    </task>
+    <servers />
+  </component>
+</project>

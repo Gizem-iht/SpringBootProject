@@ -1,20 +1,21 @@
 package com.blog.BloggingProject.Business.Concrete;
 
 import com.blog.BloggingProject.Business.Abstract.PostService;
+import com.blog.BloggingProject.Core.Mapping.ModelMapperService.ModelMapperService;
 import com.blog.BloggingProject.Core.Utilities.DataResult;
 import com.blog.BloggingProject.Core.Utilities.Result;
 import com.blog.BloggingProject.Core.Utilities.SuccessDataResult;
 import com.blog.BloggingProject.Core.Utilities.SuccessResult;
-import com.blog.BloggingProject.Dto.PostDto.PostCreateRequest;
-import com.blog.BloggingProject.Dto.PostDto.PostListRequest;
-import com.blog.BloggingProject.Dto.PostDto.PostUpdateRequest;
+import com.blog.BloggingProject.Dtos.PostDto.PostListDto;
 import com.blog.BloggingProject.Entities.Concretes.Category;
 import com.blog.BloggingProject.Entities.Concretes.Post;
-import com.blog.BloggingProject.Exception.CategoryException.CategoryNotFoundException;
-import com.blog.BloggingProject.Exception.NoDataFoundException;
-import com.blog.BloggingProject.Exception.PostException.PostNotFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.CategoryExceptions.CategoryNotFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.NoDataFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.PostExceptions.PostNotFoundException;
 import com.blog.BloggingProject.Repositories.CategoryRepository;
 import com.blog.BloggingProject.Repositories.PostRepository;
+import com.blog.BloggingProject.Request.PostRequest.PostCreateRequest;
+import com.blog.BloggingProject.Request.PostRequest.PostUpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,68 +28,65 @@ public class PostManager implements PostService {
 
     private final PostRepository postRepository;
     private final CategoryRepository categoryRepository;
+    private final ModelMapperService modelMapperService;
 
     @Autowired
-    public PostManager(PostRepository postRepository, CategoryRepository categoryRepository) {
+    public PostManager(PostRepository postRepository,
+                       CategoryRepository categoryRepository,
+                       ModelMapperService modelMapperService) {
         this.postRepository = postRepository;
         this.categoryRepository = categoryRepository;
+        this.modelMapperService = modelMapperService;
     }
 
     @Override
-    public DataResult<List<PostListRequest>> getAll() throws NoDataFoundException {
-        List<PostListRequest> dtoList = postRepository.findAll()
+    public DataResult<List<PostListDto>> getAll() throws NoDataFoundException {
+        List<PostListDto> dtoList = postRepository.findAll()
                 .stream()
-                .map(p -> new PostListRequest(p.getId(), p.getTitle(), p.getText(), p.getImage(), p.getUploadDate()))
+                .map(post -> this.modelMapperService.forDto().map(post, PostListDto.class))
                 .collect(Collectors.toList());
 
         checkIfListEmpty(dtoList);
-
         return new SuccessDataResult<>(dtoList, "Posts listed successfully.");
     }
 
-
     @Override
-    public Result createPost(PostCreateRequest req) throws CategoryNotFoundException {
-        checkIsExistsByCategoryId(req.getCategoryId());
+    public Result createPost(PostCreateRequest postRequest) throws CategoryNotFoundException {
 
-        Category cat = categoryRepository.findById(req.getCategoryId()).get();
+        checkIsExistsByCategoryId(postRequest.getCategoryId());
 
-        Post p = new Post();
-        p.setTitle(req.getTitle());
-        p.setText(req.getText());
-        p.setCategory(cat);
-        p.setUploadDate(LocalDate.now());
-        p.setImage(req.getImage());
+        Category category = categoryRepository.findById(postRequest.getCategoryId()).get();
 
-        postRepository.save(p);
+        Post post = this.modelMapperService.forRequest().map(postRequest, Post.class);
+        post.setCategory(category);
+        post.setUploadDate(LocalDate.now());
+
+        postRepository.save(post);
         return new SuccessResult("Post created successfully.");
     }
 
     @Override
-    public Result updatePost(int id, PostUpdateRequest req)
+    public Result updatePost(int id, PostUpdateRequest postRequest)
             throws PostNotFoundException, CategoryNotFoundException {
 
         checkIsExistsByPostId(id);
-        checkIsExistsByCategoryId(req.getCategoryId());
+        checkIsExistsByCategoryId(postRequest.getCategoryId());
 
-        Post existing = postRepository.findById(id).get();
-        Category cat = categoryRepository.findById(req.getCategoryId()).get();
+        Post existingpost = postRepository.findById(id).get();
 
-        existing.setTitle(req.getTitle());
-        existing.setText(req.getText());
-        existing.setCategory(cat);
-        existing.setUploadDate(LocalDate.now());
-        existing.setImage(req.getImage());
+        Category category = categoryRepository.findById(postRequest.getCategoryId()).get();
 
-        postRepository.save(existing);
+        this.modelMapperService.forRequest().map(postRequest, existingpost);
+        existingpost.setCategory(category);
+        existingpost.setUploadDate(LocalDate.now());
+
+        postRepository.save(existingpost);
         return new SuccessResult("Post updated successfully. ID: " + id);
     }
 
     @Override
     public Result deletePost(int id) throws PostNotFoundException {
-
         checkIsExistsByPostId(id);
-
         postRepository.deleteById(id);
         return new SuccessResult("Post deleted successfully. ID: " + id);
     }
@@ -106,6 +104,7 @@ public class PostManager implements PostService {
             throw new CategoryNotFoundException("Category not found with ID: " + categoryId);
         }
     }
+
     public void checkIfListEmpty(List<?> list) throws NoDataFoundException {
         if (list == null || list.isEmpty()) {
             throw new NoDataFoundException("No data found in the system.");

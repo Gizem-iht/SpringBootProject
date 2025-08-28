@@ -3,11 +3,12 @@ package com.blog.BloggingProject.Controller;
 import com.blog.BloggingProject.Business.Abstract.UserService;
 import com.blog.BloggingProject.Core.Utilities.DataResult;
 import com.blog.BloggingProject.Core.Utilities.Result;
-import com.blog.BloggingProject.Dto.UserDto.UserCreateRequest;
-import com.blog.BloggingProject.Dto.UserDto.UserListRequest;
-import com.blog.BloggingProject.Dto.UserDto.UserUpdateRequest;
-import com.blog.BloggingProject.Exception.NoDataFoundException;
-import com.blog.BloggingProject.Exception.UserException.UserNotFoundException;
+import com.blog.BloggingProject.Dtos.UserDto.UserListDto;
+import com.blog.BloggingProject.Exceptions.BusinessException.UserExceptions.EmailAlreadyExistException;
+import com.blog.BloggingProject.Request.UserRequest.UserCreateRequest;
+import com.blog.BloggingProject.Request.UserRequest.UserUpdateRequest;
+import com.blog.BloggingProject.Exceptions.BusinessException.NoDataFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.UserExceptions.UserNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,18 +27,18 @@ public class UserController {
     }
 
     @GetMapping("/getall")
-    public DataResult<List<UserListRequest>> getAll() throws NoDataFoundException {
+    public DataResult<List<UserListDto>> getAll() throws NoDataFoundException {
         return userService.getAll();
     }
     @PostMapping("/add")
-    public Result create(@Valid @RequestBody UserCreateRequest request) {
+    public Result create(@Valid @RequestBody UserCreateRequest request) throws EmailAlreadyExistException {
         return userService.createUser(request);
     }
 
     @PutMapping("/update/{id}")
     public Result update(@PathVariable int id,
                          @Valid @RequestBody UserUpdateRequest request)
-            throws UserNotFoundException {
+            throws UserNotFoundException, EmailAlreadyExistException {
         return userService.updateUser(id, request);
     }
 

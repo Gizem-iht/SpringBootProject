@@ -2,17 +2,17 @@ package com.blog.BloggingProject.Business.Abstract;
 
 import com.blog.BloggingProject.Core.Utilities.DataResult;
 import com.blog.BloggingProject.Core.Utilities.Result;
-import com.blog.BloggingProject.Dto.PostDto.PostCreateRequest;
-import com.blog.BloggingProject.Dto.PostDto.PostListRequest;
-import com.blog.BloggingProject.Dto.PostDto.PostUpdateRequest;
-import com.blog.BloggingProject.Exception.CategoryException.CategoryNotFoundException;
-import com.blog.BloggingProject.Exception.NoDataFoundException;
-import com.blog.BloggingProject.Exception.PostException.PostNotFoundException;
+import com.blog.BloggingProject.Dtos.PostDto.PostListDto;
+import com.blog.BloggingProject.Request.PostRequest.PostCreateRequest;
+import com.blog.BloggingProject.Request.PostRequest.PostUpdateRequest;
+import com.blog.BloggingProject.Exceptions.BusinessException.CategoryExceptions.CategoryNotFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.NoDataFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.PostExceptions.PostNotFoundException;
 
 import java.util.List;
 
 public interface PostService {
-    DataResult<List<PostListRequest>> getAll() throws NoDataFoundException;
+    DataResult<List<PostListDto>> getAll() throws NoDataFoundException;
 
     Result createPost(PostCreateRequest postRequest) throws CategoryNotFoundException;
 

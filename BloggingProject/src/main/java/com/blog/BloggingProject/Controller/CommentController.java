@@ -3,12 +3,12 @@ package com.blog.BloggingProject.Controller;
 import com.blog.BloggingProject.Business.Abstract.CommentService;
 import com.blog.BloggingProject.Core.Utilities.DataResult;
 import com.blog.BloggingProject.Core.Utilities.Result;
-import com.blog.BloggingProject.Dto.CommentDto.CommentCreateRequest;
-import com.blog.BloggingProject.Dto.CommentDto.CommentListRequest;
-import com.blog.BloggingProject.Dto.CommentDto.CommentUpdateRequest;
-import com.blog.BloggingProject.Exception.CommentException.CommentNotFoundException;
-import com.blog.BloggingProject.Exception.NoDataFoundException;
-import com.blog.BloggingProject.Exception.PostException.PostNotFoundException;
+import com.blog.BloggingProject.Dtos.CommentDto.CommentListDto;
+import com.blog.BloggingProject.Request.CommentRequest.CommentCreateRequest;
+import com.blog.BloggingProject.Request.CommentRequest.CommentUpdateRequest;
+import com.blog.BloggingProject.Exceptions.BusinessException.CommentExceptions.CommentNotFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.NoDataFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.PostExceptions.PostNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +27,7 @@ public class CommentController {
     }
 
     @GetMapping("/getall")
-    public DataResult<List<CommentListRequest>> getAll() throws NoDataFoundException {
+    public DataResult<List<CommentListDto>> getAll() throws NoDataFoundException {
         return commentService.getAll();
     }
 

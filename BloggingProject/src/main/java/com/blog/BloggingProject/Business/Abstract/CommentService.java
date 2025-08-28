@@ -2,17 +2,17 @@ package com.blog.BloggingProject.Business.Abstract;
 
 import com.blog.BloggingProject.Core.Utilities.DataResult;
 import com.blog.BloggingProject.Core.Utilities.Result;
-import com.blog.BloggingProject.Dto.CommentDto.CommentCreateRequest;
-import com.blog.BloggingProject.Dto.CommentDto.CommentListRequest;
-import com.blog.BloggingProject.Dto.CommentDto.CommentUpdateRequest;
-import com.blog.BloggingProject.Exception.CommentException.CommentNotFoundException;
-import com.blog.BloggingProject.Exception.NoDataFoundException;
-import com.blog.BloggingProject.Exception.PostException.PostNotFoundException;
+import com.blog.BloggingProject.Dtos.CommentDto.CommentListDto;
+import com.blog.BloggingProject.Request.CommentRequest.CommentCreateRequest;
+import com.blog.BloggingProject.Request.CommentRequest.CommentUpdateRequest;
+import com.blog.BloggingProject.Exceptions.BusinessException.CommentExceptions.CommentNotFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.NoDataFoundException;
+import com.blog.BloggingProject.Exceptions.BusinessException.PostExceptions.PostNotFoundException;
 
 import java.util.List;
 
 public interface CommentService {
-    DataResult<List<CommentListRequest>> getAll() throws NoDataFoundException;
+    DataResult<List<CommentListDto>> getAll() throws NoDataFoundException;
 
     Result createComment(CommentCreateRequest request) throws PostNotFoundException;
 
